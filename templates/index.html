@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Accueil | Client de securite{% endblock %}
+{% block page_heading %}Presentation du client{% endblock %}
+{% block page_summary %}Cette application permet de tester les fonctions principales de l&apos;API de securite depuis une interface web simple.{% endblock %}
+
+{% block content %}
+<section class="panel intro-panel">
+    <h3>Fonction du projet</h3>
+    <p>
+        Le client envoie des requetes a l&apos;API pour chiffrer, dechiffrer,
+        authentifier un utilisateur, gerer les cles et consulter les logs.
+    </p>
+</section>
+
+<section class="cards">
+    <a href="{{ url_for('encrypt') }}" class="card">
+        <h3>Chiffrement</h3>
+        <p>Envoyer une donnee a proteger.</p>
+    </a>
+    <a href="{{ url_for('decrypt') }}" class="card">
+        <h3>Dechiffrement</h3>
+        <p>Recuperer une donnee lisible.</p>
+    </a>
+    <a href="{{ url_for('keys') }}" class="card">
+        <h3>Gestion des cles</h3>
+        <p>Generer, faire tourner ou revoquer une cle.</p>
+    </a>
+    <a href="{{ url_for('auth') }}" class="card">
+        <h3>Authentification</h3>
+        <p>Ouvrir une session utilisateur.</p>
+    </a>
+    <a href="{{ url_for('logs') }}" class="card">
+        <h3>Consultation des logs</h3>
+        <p>Afficher les traces retournees par l&apos;API.</p>
+    </a>
+</section>
+{% endblock %}

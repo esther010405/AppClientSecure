@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Dechiffrement | Client de securite{% endblock %}
+{% block page_heading %}Dechiffrement{% endblock %}
+{% block page_summary %}Saisir une valeur chiffree puis demander son dechiffrement.{% endblock %}
+
+{% block content %}
+<section class="panel">
+    <form method="POST" class="form-stack">
+        <label for="data">Valeur chiffree</label>
+        <textarea id="data" name="data" rows="6" placeholder="Collez la valeur chiffree ici" required></textarea>
+        <button type="submit">Dechiffrer</button>
+    </form>
+</section>
+
+{% if result %}
+<section class="panel">
+    <h3>Resultat</h3>
+    <pre>{{ result | tojson(indent=2) }}</pre>
+</section>
+{% endif %}
+{% endblock %}

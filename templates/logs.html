@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Logs | Client de securite{% endblock %}
+{% block page_heading %}Consultation des logs{% endblock %}
+{% block page_summary %}Cette page affiche les traces retournees par l&apos;API.{% endblock %}
+
+{% block content %}
+<section class="panel">
+    {% if logs %}
+        <pre>{{ logs | tojson(indent=2) }}</pre>
+    {% else %}
+        <p>Aucun log disponible.</p>
+    {% endif %}
+</section>
+{% endblock %}

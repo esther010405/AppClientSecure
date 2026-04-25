@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Cles | Client de securite{% endblock %}
+{% block page_heading %}Gestion des cles{% endblock %}
+{% block page_summary %}Choisir une action pour tester l&apos;administration des cles.{% endblock %}
+
+{% block content %}
+<section class="panel">
+    <form method="POST" class="form-stack">
+        <button name="action" value="generate" type="submit">Generer une cle</button>
+        <button name="action" value="rotate" type="submit">Faire une rotation</button>
+        <button name="action" value="revoke" type="submit">Revoquer une cle</button>
+    </form>
+</section>
+
+{% if result %}
+<section class="panel">
+    <h3>Resultat</h3>
+    <pre>{{ result | tojson(indent=2) }}</pre>
+</section>
+{% endif %}
+{% endblock %}

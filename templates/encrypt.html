@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Chiffrement | Client de securite{% endblock %}
+{% block page_heading %}Chiffrement{% endblock %}
+{% block page_summary %}Saisir une donnee puis envoyer la requete de chiffrement a l&apos;API.{% endblock %}
+
+{% block content %}
+<section class="panel">
+    <form method="POST" class="form-stack">
+        <label for="data">Donnee a chiffrer</label>
+        <textarea id="data" name="data" rows="6" placeholder="Entrez la donnee ici" required></textarea>
+        <button type="submit">Chiffrer</button>
+    </form>
+</section>
+
+{% if result %}
+<section class="panel">
+    <h3>Resultat</h3>
+    <pre>{{ result | tojson(indent=2) }}</pre>
+</section>
+{% endif %}
+{% endblock %}

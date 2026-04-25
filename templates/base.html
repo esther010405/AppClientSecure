@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Client de securite{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <a class="brand" href="{{ url_for('home') }}">
+                <h1>Client de securite</h1>
+                <p>Interface de test de l&apos;API</p>
+            </a>
+
+            <nav class="nav">
+                <a href="{{ url_for('home') }}" class="{% if request.path == '/' %}active{% endif %}">Accueil</a>
+                <a href="{{ url_for('encrypt') }}" class="{% if request.path == '/encrypt' %}active{% endif %}">Chiffrement</a>
+                <a href="{{ url_for('decrypt') }}" class="{% if request.path == '/decrypt' %}active{% endif %}">Dechiffrement</a>
+                <a href="{{ url_for('keys') }}" class="{% if request.path == '/keys' %}active{% endif %}">Cles</a>
+                <a href="{{ url_for('auth') }}" class="{% if request.path == '/auth' %}active{% endif %}">Connexion</a>
+                <a href="{{ url_for('logs') }}" class="{% if request.path == '/logs' %}active{% endif %}">Logs</a>
+            </nav>
+
+            <div class="session-state">
+                {% if session.get("token") %}
+                    <span class="badge success">Session active</span>
+                {% else %}
+                    <span class="badge">Aucune session</span>
+                {% endif %}
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="page-header">
+                <h2>{% block page_heading %}Vue generale{% endblock %}</h2>
+                <p>{% block page_summary %}Interface simple pour tester les principales routes de l&apos;API.{% endblock %}</p>
+            </header>
+
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</body>
+</html>

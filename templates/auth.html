@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Connexion | Client de securite{% endblock %}
+{% block page_heading %}Authentification{% endblock %}
+{% block page_summary %}Saisir les identifiants pour recuperer un jeton de session.{% endblock %}
+
+{% block content %}
+<section class="panel">
+    <form method="POST" class="form-stack">
+        <label for="username">Nom d&apos;utilisateur</label>
+        <input id="username" name="username" placeholder="Utilisateur" required>
+
+        <label for="password">Mot de passe</label>
+        <input id="password" type="password" name="password" placeholder="Mot de passe" required>
+
+        <button type="submit">Se connecter</button>
+    </form>
+</section>
+
+{% if result %}
+<section class="panel">
+    <h3>Resultat</h3>
+    <pre>{{ result | tojson(indent=2) }}</pre>
+
+    {% if result.token %}
+        <label for="token">Jeton</label>
+        <textarea id="token" rows="4" readonly>{{ result.token }}</textarea>
+    {% endif %}
+</section>
+{% endif %}
+{% endblock %}
